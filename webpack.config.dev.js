@@ -1,8 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { EnvironmentPlugin } = require('webpack');
-require('dotenv').config();
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -11,7 +10,7 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/',
   },
-  mode: 'production',
+  mode: 'development',
   resolve: {
     extensions: ['.js', '.jsx'],
   },
@@ -52,6 +51,13 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
     }),
-    new EnvironmentPlugin(['API_GOOGLE']),
+    new Dotenv(),
   ],
+  devServer: {
+    static: path.join(__dirname, 'dist'),
+    compress: true,
+    historyApiFallback: true,
+    port: 3005,
+    open: true,
+  },
 };
