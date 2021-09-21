@@ -10,7 +10,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: npm run build API_GOOGLE=$API_GOOGLE 
+        run: API_GOOGLE=$API_GOOGLE npm run build  
         env:
           API_GOOGLE: ${{ secrets.API_GOOGLE }}
       - name: Archive Production Artifact
