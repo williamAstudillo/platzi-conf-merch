@@ -1,7 +1,7 @@
 import React from 'react';
-import env from 'react-dotenv';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
+const { API_GOOGLE } = process.env;
 const Map = ({data}) => {
   const mapStyles = {
     height: '50vh',
@@ -14,7 +14,7 @@ const Map = ({data}) => {
   };
 
   return (
-    <LoadScript googleMapsApiKey={env.API_GOOGLE}>
+    <LoadScript googleMapsApiKey={API_GOOGLE}>
       <GoogleMap mapContainerStyle={mapStyles} zoom={17} center={data}>
         <Marker position={defaultCenter} />
       </GoogleMap>
