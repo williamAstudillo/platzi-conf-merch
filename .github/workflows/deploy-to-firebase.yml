@@ -12,6 +12,8 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+          env:
+          API_GOOGLE: ${{ secrets.API_GOOGLE }}
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
@@ -35,5 +37,4 @@ jobs:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          API_GOOGLE: ${{ secrets.API_GOOGLE }}
 
